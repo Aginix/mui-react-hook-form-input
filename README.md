@@ -8,6 +8,8 @@
 
 Wrapper component for [Material-UI](https://github.com/mui-org/material-ui) & [React Hook Form Input](https://github.com/react-hook-form/input).
 
+See [Storybook](https://aginix.github.io/mui-react-hook-form-input).
+
 ## Installation
 
 ```bash
