@@ -13,30 +13,33 @@ See [Storybook](https://aginix.github.io/mui-react-hook-form-input).
 ## Installation
 
 ```bash
-$ yarn add @material-ui/core @material-ui/icons react-hook-form react-hook-form-input @aginix/mui-react-hook-form-input
+yarn add @aginix/mui-react-hook-form-input
 ```
 
-### Storybook
+Note that `@aginix/mui-react-hook-form-input` has peer-dependencies on `@material-ui/core`, `react-hook-form` and `react-hook-form-input`, all of which can also be installed from npm if your project doesn't already use them.
 
-Run inside another terminal:
+### Storybook
 
 ```
 yarn storybook
 ```
 
-### Example
-
-Then run the example inside another:
+### Run an example
 
 ```
 cd example
-npm i # or yarn to install dependencies
-npm start # or yarn start
+yarn install
+yarn start
 ```
 
-To do a one-off build, use `npm run build` or `yarn build`.
+### Build
 
-To run tests, use `npm test` or `yarn test`.
+`yarn build`
+
+### Run tests
+
+`yarn test`
+
 
 ## License
 
