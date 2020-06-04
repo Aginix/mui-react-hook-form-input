@@ -10,9 +10,7 @@ export interface Props {
 
 export const Form: React.FC<Props> = ({ children, onSubmit, form }) => (
   <FormContext.Provider value={form}>
-    <form onSubmit={onSubmit}>
-      {children}
-    </form>
+    <form onSubmit={onSubmit}>{children}</form>
   </FormContext.Provider>
 );
 
