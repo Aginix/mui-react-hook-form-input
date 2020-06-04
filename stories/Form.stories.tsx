@@ -12,14 +12,15 @@ import {
   Radio,
   FormLabel,
 } from '@material-ui/core';
-import { action } from '@storybook/addon-actions';
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 import { useForm } from 'react-hook-form';
+import { DevTool } from "react-hook-form-devtools";
 
 import Form, { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../src'
 
 export default {
-  title: 'Form (React Hook Form)',
+  title: 'Form',
   decorators: [(storyFn: any) => <div style={{ margin: 8 }}>{storyFn()}</div>],
 };
 
@@ -104,6 +105,7 @@ export const Default = () => {
             </Button>
           </Grid>
         </Grid>
+        <DevTool control={form.control} />
       </Form>
     </Paper>
   );
