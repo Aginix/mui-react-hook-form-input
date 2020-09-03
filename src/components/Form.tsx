@@ -1,27 +1,15 @@
-import React, { createContext, useContext } from 'react';
-import { FieldValues, FormContextValues } from 'react-hook-form';
-
-export const FormContext = createContext<Partial<FormContextValues>>(null as any);
+import React from 'react';
+import { FormContextValues, FormContext } from 'react-hook-form';
 
 export interface Props {
-  form: FormContextValues<FieldValues>;
+  form: FormContextValues<Record<string, any> | object>;
   onSubmit?: (e?: React.BaseSyntheticEvent) => Promise<void>;
 }
 
 export const Form: React.FC<Props> = ({ children, onSubmit, form }) => (
-  <FormContext.Provider value={form}>
+  <FormContext {...form}>
     <form onSubmit={onSubmit}>{children}</form>
-  </FormContext.Provider>
+  </FormContext>
 );
-
-export const useFormContext = () => {
-  const context = useContext(FormContext);
-
-  if (!context) {
-    throw new Error('Cannot get FormContext');
-  }
-
-  return context as FormContextValues<FieldValues>;
-};
 
 export default Form;

@@ -15,7 +15,11 @@ import { useForm } from 'react-hook-form';
 import Form, { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../src'
 
 const Wrapper: React.FC<{}> = ({ children }) => {
-  const form = useForm();
+  const form = useForm<any>({
+    defaultValues: {
+      volume: 0,
+    }
+  });
 
   const handleSubmit = form.handleSubmit((data: any) => {
     action('submit')(data);
@@ -59,7 +63,7 @@ SampleSelect.story = {
 };
 
 export const SampleSlider = () => {
-  return <Slider name="Volume" />
+  return <Slider name="volume" />
 };
 SampleSlider.story = {
   name: 'Slider',

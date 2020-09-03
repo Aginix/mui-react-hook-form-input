@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { useForm } from 'react-hook-form';
+import { useForm, ErrorMessage } from 'react-hook-form';
 
 import Form, { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../src'
 
@@ -24,7 +24,11 @@ export default {
 };
 
 export const Default = () => {
-  const form = useForm();
+  const form = useForm<any>({
+    defaultValues: {
+      volume: 10,
+    }
+  });
 
   const handleSubmit = form.handleSubmit((data: any) => {
     action('submit')(data);
@@ -51,7 +55,7 @@ export const Default = () => {
                 name="email"
                 type="email"
                 label="email"
-                RHFInputProps={{ rules: { required: true } }}
+                RHFInputProps={{ rules: { required: 'Email is required!' } }}
               />
               <FormHelperText id="my-helper-text">We&apos;ll never share your email.</FormHelperText>
             </FormControl>
@@ -62,16 +66,21 @@ export const Default = () => {
           </Grid>
           <Grid item md={6} />
           <Grid item md={6}>
-            <InputLabel id="age" required>
-              Age
-            </InputLabel>
-            <Select labelId="age" id="age" value="20" name="age" RHFInputProps={{ rules: { required: true } }}>
-              <MenuItem value="10">Ten</MenuItem>
-              <MenuItem value="20">Twenty</MenuItem>
-            </Select>
+            <FormControl variant="outlined" margin="dense" fullWidth>
+              <InputLabel id="age" required>
+                Age
+              </InputLabel>
+              <Select labelId="age" id="age" value="20" name="age" label="Age" RHFInputProps={{ rules: { required: 'Age is required!' } }}>
+                <MenuItem value="10">Ten</MenuItem>
+                <MenuItem value="20">Twenty</MenuItem>
+              </Select>
+            </FormControl>
+            <ErrorMessage errors={form.errors} name="age">
+              {({ message }) => <FormHelperText error>{message}</FormHelperText>}
+            </ErrorMessage>
           </Grid>
           <Grid item md={6}>
-            <Slider name="Volume" />
+            <Slider name="volume" />
           </Grid>
           <Grid item md={6}>
             <FormControl component="fieldset">

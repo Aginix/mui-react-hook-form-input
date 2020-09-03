@@ -3,7 +3,7 @@ import { CheckboxProps as MuiCheckboxProps } from '@material-ui/core/Checkbox';
 import React from 'react';
 import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from './Form';
+import { useFormContext } from 'react-hook-form';
 import { RHFInputProps } from './Props';
 
 export interface CheckboxProps extends MuiCheckboxProps {

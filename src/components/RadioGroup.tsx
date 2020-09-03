@@ -1,9 +1,9 @@
 import { RadioGroup as MuiRadioGroup } from '@material-ui/core';
 import { RadioGroupProps as MuiRadioGroupProps } from '@material-ui/core/RadioGroup';
 import React from 'react';
+import { useFormContext } from 'react-hook-form';
 import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from './Form';
 import { RHFInputProps } from './Props';
 
 export interface RadioGroupProps extends MuiRadioGroupProps {

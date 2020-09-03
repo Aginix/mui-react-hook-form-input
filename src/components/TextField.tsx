@@ -1,9 +1,9 @@
 import { TextField as MuiTextField } from '@material-ui/core';
 import { TextFieldProps as MuiTextFieldProps } from '@material-ui/core/TextField';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from './Form';
+import { useFormContext } from 'react-hook-form';
 import { RHFInputProps } from './Props';
 
 export type TextFieldProps = MuiTextFieldProps & {
@@ -27,7 +27,7 @@ const TextField = ({ name, RHFInputProps, ...rest }: TextFieldProps) => {
           fullWidth
           variant="outlined"
           error={!!errors[name]}
-          helperText={!!errors[name]}
+          helperText={<Fragment>{errors[name]?.message}</Fragment>}
           {...rest}
         />
       }

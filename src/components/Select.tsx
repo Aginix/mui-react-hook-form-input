@@ -3,7 +3,7 @@ import { SelectProps as MuiSelectProps } from '@material-ui/core/Select';
 import React from 'react';
 import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from './Form';
+import { useFormContext } from 'react-hook-form';
 import { RHFInputProps } from './Props';
 
 export interface SelectProps extends MuiSelectProps {

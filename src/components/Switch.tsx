@@ -3,7 +3,7 @@ import { SwitchProps as MuiSwitchProps } from '@material-ui/core/Switch';
 import React from 'react';
 import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from './Form';
+import { useFormContext } from 'react-hook-form';
 import { RHFInputProps } from './Props';
 
 export interface SwitchProps extends MuiSwitchProps {
@@ -27,7 +27,7 @@ const Switch = ({ name, RHFInputProps, ...rest }: SwitchProps) => {
       register={register}
       setValue={setValue}
       onChangeEvent={handleChange}
-      as={<MuiSwitch {...rest} />}
+      as={<MuiSwitch {...rest}  />}
     />
   );
 };
