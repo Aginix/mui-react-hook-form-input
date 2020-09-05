@@ -2,7 +2,6 @@ import { Slider as MuiSlider } from '@material-ui/core';
 import { SliderProps as MuiSliderProps } from '@material-ui/core/Slider';
 import React from 'react';
 
-import { RHFInputProps } from './Props';
 import { Controller, useFormContext, ValidationRules } from 'react-hook-form';
 
 export interface SliderProps extends MuiSliderProps {
