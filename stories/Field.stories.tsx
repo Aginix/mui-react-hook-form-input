@@ -10,9 +10,9 @@ import {
 } from '@material-ui/core';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import { useForm } from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 
-import Form, { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../src'
+import { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../src'
 
 const Wrapper: React.FC<{}> = ({ children }) => {
   const form = useForm<any>({
@@ -27,9 +27,11 @@ const Wrapper: React.FC<{}> = ({ children }) => {
   });
 
   return (
-    <Form form={form} onSubmit={handleSubmit}>
-      {children}
-    </Form>
+    <FormProvider {...form}>
+      <form onSubmit={handleSubmit}>
+        {children}
+      </form>
+    </FormProvider>
   )
 }
 

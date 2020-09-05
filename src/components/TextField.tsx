@@ -1,36 +1,33 @@
 import { TextField as MuiTextField } from '@material-ui/core';
 import { TextFieldProps as MuiTextFieldProps } from '@material-ui/core/TextField';
-import React, { Fragment } from 'react';
-import { RHFInput } from 'react-hook-form-input';
+import React from 'react';
 
-import { useFormContext } from 'react-hook-form';
-import { RHFInputProps } from './Props';
+import { useFormContext, Controller, ValidationRules } from 'react-hook-form';
 
 export type TextFieldProps = MuiTextFieldProps & {
   name: string;
-  RHFInputProps?: Partial<RHFInputProps>;
+  rules?: ValidationRules;
 };
 
-const TextField = ({ name, RHFInputProps, ...rest }: TextFieldProps) => {
-  const { register, setValue, errors } = useFormContext();
+const TextField = ({ name, rules, ...rest }: TextFieldProps) => {
+  const { control, errors } = useFormContext();
 
   return (
-    <RHFInput
-      {...RHFInputProps}
+    <Controller
+      control={control}
       name={name}
-      register={register}
-      setValue={setValue}
-      defaultValue=""
-      as={
+      rules={rules}
+      render={({ name, onBlur, onChange, value }) => (
         <MuiTextField
-          size="small"
-          fullWidth
-          variant="outlined"
-          error={!!errors[name]}
-          helperText={<Fragment>{errors[name]?.message}</Fragment>}
           {...rest}
+          error={!!errors[name]}
+          onBlur={onBlur}
+          onChange={onChange}
+          value={value}
+          name={name}
         />
-      }
+      )}
+      defaultValue=""
     />
   );
 };

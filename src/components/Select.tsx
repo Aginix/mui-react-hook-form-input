@@ -1,26 +1,25 @@
 import { Select as MuiSelect } from '@material-ui/core';
 import { SelectProps as MuiSelectProps } from '@material-ui/core/Select';
 import React from 'react';
-import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from 'react-hook-form';
-import { RHFInputProps } from './Props';
+import { Controller, useFormContext, ValidationRules } from 'react-hook-form';
 
 export interface SelectProps extends MuiSelectProps {
   name: string;
-  RHFInputProps?: Partial<RHFInputProps>;
+  rules?: ValidationRules;
 }
 
-const Select = ({ name, RHFInputProps, ...rest }: SelectProps) => {
-  const { register, setValue, errors } = useFormContext();
+const Select = ({ name, rules, ...rest }: SelectProps) => {
+  const { control, getValues } = useFormContext();
+
+  const defaultValue = getValues()[name];
   return (
-    <RHFInput
-      {...RHFInputProps}
+    <Controller
+      control={control}
       name={name}
-      defaultValue={rest.defaultValue as any}
-      register={register}
-      setValue={setValue}
-      as={<MuiSelect fullWidth error={!!errors![name]} {...rest} />}
+      rules={rules}
+      defaultValue={defaultValue}
+      as={<MuiSelect {...rest} defaultValue={defaultValue} />}
     />
   );
 };

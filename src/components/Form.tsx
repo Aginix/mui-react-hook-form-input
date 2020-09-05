@@ -1,15 +1,15 @@
 import React from 'react';
-import { FormContextValues, FormContext } from 'react-hook-form';
+import { FormProvider, FormProviderProps } from 'react-hook-form';
 
 export interface Props {
-  form: FormContextValues<Record<string, any> | object>;
+  form: FormProviderProps<Record<string, any> | object>;
   onSubmit?: (e?: React.BaseSyntheticEvent) => Promise<void>;
 }
 
 export const Form: React.FC<Props> = ({ children, onSubmit, form }) => (
-  <FormContext {...form}>
+  <FormProvider {...form}>
     <form onSubmit={onSubmit}>{children}</form>
-  </FormContext>
+  </FormProvider>
 );
 
 export default Form;

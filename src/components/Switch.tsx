@@ -27,7 +27,7 @@ const Switch = ({ name, RHFInputProps, ...rest }: SwitchProps) => {
       register={register}
       setValue={setValue}
       onChangeEvent={handleChange}
-      as={<MuiSwitch {...rest}  />}
+      as={<MuiSwitch {...rest} />}
     />
   );
 };
