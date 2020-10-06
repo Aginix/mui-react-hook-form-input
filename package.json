@@ -50,7 +50,7 @@
     "@storybook/addon-info": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
-    "@storybook/react": "^5.3.19",
+    "@storybook/react": "^6.0.26",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
