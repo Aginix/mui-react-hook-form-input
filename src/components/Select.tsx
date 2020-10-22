@@ -10,7 +10,7 @@ export interface SelectProps extends MuiSelectProps {
 }
 
 const Select = ({ name, rules, ...rest }: SelectProps) => {
-  const { control, getValues } = useFormContext();
+  const { control, getValues, errors } = useFormContext();
 
   const defaultValue = getValues()[name];
   return (
@@ -18,8 +18,8 @@ const Select = ({ name, rules, ...rest }: SelectProps) => {
       control={control}
       name={name}
       rules={rules}
-      defaultValue={defaultValue}
-      as={<MuiSelect {...rest} defaultValue={defaultValue} />}
+      defaultValue={defaultValue || ''}
+      as={<MuiSelect {...rest} defaultValue={defaultValue} error={!!errors[name]} />}
     />
   );
 };

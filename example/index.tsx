@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 import { FormProvider } from 'react-hook-form';
 
-import { TextField, Select, Slider, Checkbox, Switch, RadioGroup } from '../.';
+import { ErrorMessage, TextField, Select, Slider, Checkbox, Switch, RadioGroup } from '../.';
 
 const App = () => {
   const form = useForm();
@@ -44,7 +44,8 @@ const App = () => {
             </Grid>
             <Grid item md={6}>
               <FormControl>
-                <TextField id="email" name="email" type="email" label="email" rules={{ required: true }} />
+                <TextField id="email" name="email" type="email" label="email" rules={{ required: 'Please enter email' }} />
+                <ErrorMessage name="email" />
                 <FormHelperText id="my-helper-text">We&apos;ll never share your email.</FormHelperText>
               </FormControl>
             </Grid>
@@ -54,13 +55,16 @@ const App = () => {
             </Grid>
             <Grid item md={6} />
             <Grid item md={6}>
-              <InputLabel id="age" required>
-                Age
-              </InputLabel>
-              <Select labelId="age" id="age" value="20" name="age" rules={{ required: true }}>
-                <MenuItem value="10">Ten</MenuItem>
-                <MenuItem value="20">Twenty</MenuItem>
-              </Select>
+              <FormControl error={!!form.errors['age']} fullWidth>
+                <InputLabel id="age" required>
+                  Age
+                </InputLabel>
+                <Select labelId="age" id="age" value="20" name="age" rules={{ required: 'Please enter age', minLength: { value: 4, message: 'Value must be greater than 4' }  }}>
+                  <MenuItem value="10">Ten</MenuItem>
+                  <MenuItem value="20">Twenty</MenuItem>
+                </Select>
+                <ErrorMessage name="age" />
+              </FormControl>
             </Grid>
             <Grid item md={6}>
               <Slider name="Volume" />
