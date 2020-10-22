@@ -1,33 +1,28 @@
 import { Checkbox as MuiCheckbox } from '@material-ui/core';
 import { CheckboxProps as MuiCheckboxProps } from '@material-ui/core/Checkbox';
 import React from 'react';
-import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from 'react-hook-form';
-import { RHFInputProps } from './Props';
+import { Controller, useFormContext, ValidationRules } from 'react-hook-form';
 
 export interface CheckboxProps extends MuiCheckboxProps {
   name: string;
-  RHFInputProps?: Partial<RHFInputProps>;
+  rules?: ValidationRules;
+  onFocus?: (() => void) | undefined;
 }
 
-const Checkbox = ({ name, RHFInputProps, ...rest }: CheckboxProps) => {
-  const { register, setValue } = useFormContext();
-
-  function handleChange([_, value]: [any, any]) {
-    return value;
-  }
+const Checkbox = ({ name, rules, defaultValue, defaultChecked, onFocus, ...rest }: CheckboxProps) => {
+  const { control } = useFormContext();
 
   return (
-    <RHFInput
-      {...RHFInputProps}
-      type="checkbox"
+    <Controller
+      control={control}
       name={name}
-      value={name}
-      register={register}
-      setValue={setValue}
-      onChangeEvent={handleChange}
-      as={<MuiCheckbox {...rest} />}
+      defaultValue={defaultValue || defaultChecked || false}
+      rules={rules}
+      onFocus={onFocus}
+      render={({ onChange, value }) => (
+        <MuiCheckbox onChange={e => onChange(e.target.checked)} checked={value} {...rest} />
+      )}
     />
   );
 };

@@ -2,7 +2,7 @@ import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useForm } from 'react-hook-form';
-import { DevTool } from 'react-hook-form-devtools';
+import { DevTool } from '@hookform/devtools';
 import {
   Button,
   Grid,
@@ -19,7 +19,7 @@ import {
 } from '@material-ui/core';
 import { FormProvider } from 'react-hook-form';
 
-import { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../.';
+import { TextField, Select, Slider, Checkbox, Switch, RadioGroup } from '../.';
 
 const App = () => {
   const form = useForm();
@@ -44,13 +44,7 @@ const App = () => {
             </Grid>
             <Grid item md={6}>
               <FormControl>
-                <TextField
-                  id="email"
-                  name="email"
-                  type="email"
-                  label="email"
-                  RHFInputProps={{ rules: { required: true } }}
-                />
+                <TextField id="email" name="email" type="email" label="email" rules={{ required: true }} />
                 <FormHelperText id="my-helper-text">We&apos;ll never share your email.</FormHelperText>
               </FormControl>
             </Grid>
@@ -63,7 +57,7 @@ const App = () => {
               <InputLabel id="age" required>
                 Age
               </InputLabel>
-              <Select labelId="age" id="age" value="20" name="age" RHFInputProps={{ rules: { required: true } }}>
+              <Select labelId="age" id="age" value="20" name="age" rules={{ required: true }}>
                 <MenuItem value="10">Ten</MenuItem>
                 <MenuItem value="20">Twenty</MenuItem>
               </Select>

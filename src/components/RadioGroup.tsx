@@ -1,32 +1,24 @@
 import { RadioGroup as MuiRadioGroup } from '@material-ui/core';
 import { RadioGroupProps as MuiRadioGroupProps } from '@material-ui/core/RadioGroup';
+import { Controller, ValidationRules } from 'react-hook-form';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
-import { RHFInput } from 'react-hook-form-input';
-
-import { RHFInputProps } from './Props';
 
 export interface RadioGroupProps extends MuiRadioGroupProps {
   name: string;
-  RHFInputProps?: Partial<RHFInputProps>;
+  rules?: ValidationRules;
 }
 
-const RadioGroup = ({ name, RHFInputProps, ...rest }: RadioGroupProps) => {
-  const { register, setValue } = useFormContext();
-
-  function handleChange([_, value]: [any, any]) {
-    return value;
-  }
+const RadioGroup = ({ name, rules, defaultValue, ...rest }: RadioGroupProps) => {
+  const { control } = useFormContext();
 
   return (
-    <RHFInput
-      {...RHFInputProps}
+    <Controller
+      control={control}
       name={name}
-      value={name}
-      register={register}
-      setValue={setValue}
-      onChangeEvent={handleChange}
-      as={<MuiRadioGroup aria-label={name} name={name} {...rest} />}
+      rules={rules}
+      defaultValue={defaultValue || null}
+      render={({ onChange, value }) => <MuiRadioGroup onChange={onChange} aria-label={name} value={value} {...rest} />}
     />
   );
 };

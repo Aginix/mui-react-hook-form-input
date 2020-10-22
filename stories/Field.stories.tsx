@@ -12,13 +12,14 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { useForm, FormProvider } from 'react-hook-form';
 
-import { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../src'
+import { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../src';
 
 const Wrapper: React.FC<{}> = ({ children }) => {
   const form = useForm<any>({
     defaultValues: {
       volume: 0,
-    }
+      age: '10',
+    },
   });
 
   const handleSubmit = form.handleSubmit((data: any) => {
@@ -28,21 +29,25 @@ const Wrapper: React.FC<{}> = ({ children }) => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={handleSubmit}>
-        {children}
-      </form>
+      <form onSubmit={handleSubmit}>{children}</form>
     </FormProvider>
-  )
-}
+  );
+};
 
 export default {
   title: 'Fields',
-  decorators: [(storyFn: any) => <Wrapper><div style={{ margin: 8 }}>{storyFn()}</div></Wrapper>],
+  decorators: [
+    (storyFn: any) => (
+      <Wrapper>
+        <div style={{ margin: 8 }}>{storyFn()}</div>
+      </Wrapper>
+    ),
+  ],
 };
 
 export const SampleTextField = () => {
-  return <TextField id="firstName" name="firstName" label="firstName" />
-}
+  return <TextField id="firstName" name="firstName" label="firstName" />;
+};
 SampleTextField.story = {
   name: 'TextField',
 };
@@ -53,7 +58,7 @@ export const SampleSelect = () => {
       <InputLabel id="age" required>
         Age
       </InputLabel>
-      <Select labelId="age" id="age" value="20" name="age" RHFInputProps={{ rules: { required: true } }}>
+      <Select labelId="age" id="age" value="20" name="age" rules={{ required: true }}>
         <MenuItem value="10">Ten</MenuItem>
         <MenuItem value="20">Twenty</MenuItem>
       </Select>
@@ -65,14 +70,14 @@ SampleSelect.story = {
 };
 
 export const SampleSlider = () => {
-  return <Slider name="volume" />
+  return <Slider name="volume" />;
 };
 SampleSlider.story = {
   name: 'Slider',
 };
 
 export const SampleSwitch = () => {
-  return <FormControlLabel control={<Switch name="active" value="true" />} label="Active" />
+  return <FormControlLabel control={<Switch name="active" value="true" />} label="Active" />;
 };
 SampleSwitch.story = {
   name: 'Switch',
@@ -89,7 +94,7 @@ export const SampleRadio = () => {
         <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
       </RadioGroup>
     </FormControl>
-  )
+  );
 };
 SampleRadio.story = {
   name: 'Radio',
@@ -106,7 +111,7 @@ export const SampleCheckbox = () => {
       </FormGroup>
       <FormHelperText>Be careful</FormHelperText>
     </FormControl>
-  )
+  );
 };
 SampleCheckbox.story = {
   name: 'Checkbox',

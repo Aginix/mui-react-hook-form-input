@@ -24,6 +24,7 @@ const Slider = ({ name, rules, ...rest }: SliderProps) => {
           onChange={(_: React.ChangeEvent<{}>, value: number | number[]) => onChange(value)}
           value={value}
           name={name}
+          {...rest}
         />
       )}
       defaultValue={defaultValue}
