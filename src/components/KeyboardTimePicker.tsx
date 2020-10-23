@@ -4,7 +4,9 @@ import React from 'react';
 
 import { BaseProps } from './props';
 
-export interface MuiKeyboardTimePickerProps extends BaseProps, Omit<KeyboardTimePickerProps, 'value' | 'onChange' | 'name'> {}
+export interface MuiKeyboardTimePickerProps
+  extends BaseProps,
+    Omit<KeyboardTimePickerProps, 'value' | 'onChange' | 'name'> {}
 
 const KeyboardTimePicker = ({ name, rules, ...rest }: MuiKeyboardTimePickerProps) => {
   const { register, setValue, watch } = useFormContext();
