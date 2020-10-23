@@ -1,36 +1,25 @@
 import { TextField as MuiTextField } from '@material-ui/core';
 import { TextFieldProps as MuiTextFieldProps } from '@material-ui/core/TextField';
 import React from 'react';
-import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from './Form';
-import { RHFInputProps } from './Props';
+import { useFormContext, Controller } from 'react-hook-form';
 
-export type TextFieldProps = MuiTextFieldProps & {
-  name: string;
-  RHFInputProps?: Partial<RHFInputProps>;
-};
+import { BaseProps } from './props';
 
-const TextField = ({ name, RHFInputProps, ...rest }: TextFieldProps) => {
-  const { register, setValue, errors } = useFormContext();
+export interface TextFieldProps extends BaseProps, Omit<MuiTextFieldProps, 'name'> {}
+
+const TextField = ({ name, rules, ...rest }: TextFieldProps) => {
+  const { control, errors } = useFormContext();
 
   return (
-    <RHFInput
-      {...RHFInputProps}
+    <Controller
+      control={control}
       name={name}
-      register={register}
-      setValue={setValue}
+      rules={rules}
+      render={({ name, onBlur, onChange, value }) => (
+        <MuiTextField {...rest} error={!!errors[name]} onBlur={onBlur} onChange={onChange} value={value} name={name} />
+      )}
       defaultValue=""
-      as={
-        <MuiTextField
-          size="small"
-          fullWidth
-          variant="outlined"
-          error={!!errors[name]}
-          helperText={!!errors[name]}
-          {...rest}
-        />
-      }
     />
   );
 };

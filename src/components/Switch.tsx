@@ -1,33 +1,25 @@
 import { Switch as MuiSwitch } from '@material-ui/core';
 import { SwitchProps as MuiSwitchProps } from '@material-ui/core/Switch';
 import React from 'react';
-import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from './Form';
-import { RHFInputProps } from './Props';
+import { Controller, useFormContext } from 'react-hook-form';
 
-export interface SwitchProps extends MuiSwitchProps {
-  name: string;
-  RHFInputProps?: Partial<RHFInputProps>;
-}
+import { BaseProps } from './props';
 
-const Switch = ({ name, RHFInputProps, ...rest }: SwitchProps) => {
-  const { register, setValue } = useFormContext();
+export interface SwitchProps extends BaseProps, Omit<MuiSwitchProps, 'name'> {}
 
-  function handleChange([_, value]: [any, any]) {
-    return value;
-  }
+const Switch = ({ name, rules, defaultValue, defaultChecked, ...rest }: SwitchProps) => {
+  const { control } = useFormContext();
 
   return (
-    <RHFInput
-      {...RHFInputProps}
-      type="checkbox"
+    <Controller
+      control={control}
       name={name}
-      value={name}
-      register={register}
-      setValue={setValue}
-      onChangeEvent={handleChange}
-      as={<MuiSwitch {...rest} />}
+      rules={rules}
+      defaultValue={defaultValue || defaultChecked || false}
+      render={({ onChange, value }) => (
+        <MuiSwitch onChange={e => onChange(e.target.checked)} checked={value} {...rest} />
+      )}
     />
   );
 };

@@ -1,32 +1,32 @@
 import { Slider as MuiSlider } from '@material-ui/core';
 import { SliderProps as MuiSliderProps } from '@material-ui/core/Slider';
 import React from 'react';
-import { RHFInput } from 'react-hook-form-input';
 
-import { useFormContext } from './Form';
-import { RHFInputProps } from './Props';
+import { Controller, useFormContext } from 'react-hook-form';
 
-export interface SliderProps extends MuiSliderProps {
-  name: string;
-  RHFInputProps?: Partial<RHFInputProps>;
-}
+import { BaseProps } from './props';
 
-const Slider = ({ name, RHFInputProps, ...rest }: SliderProps) => {
-  const { register, setValue } = useFormContext();
+export interface SliderProps extends BaseProps, Omit<MuiSliderProps, 'name'> {}
 
-  function handleChange([_, value]: [any, any]) {
-    return value;
-  }
+const Slider = ({ name, rules, ...rest }: SliderProps) => {
+  const { getValues, control } = useFormContext();
 
+  const defaultValue = getValues()[name];
   return (
-    <RHFInput
-      {...RHFInputProps}
+    <Controller
+      control={control}
       name={name}
-      value={name}
-      register={register}
-      setValue={setValue}
-      onChangeEvent={handleChange}
-      as={<MuiSlider {...rest} />}
+      rules={rules}
+      render={({ name, onBlur, onChange, value }) => (
+        <MuiSlider
+          onBlur={onBlur}
+          onChange={(_: React.ChangeEvent<{}>, value: number | number[]) => onChange(value)}
+          value={value}
+          name={name}
+          {...rest}
+        />
+      )}
+      defaultValue={defaultValue}
     />
   );
 };
