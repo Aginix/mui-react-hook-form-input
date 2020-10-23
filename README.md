@@ -6,7 +6,7 @@
 
 ## Description
 
-Wrapper component for [Material-UI](https://github.com/mui-org/material-ui) & [React Hook Form Input](https://github.com/react-hook-form/input).
+Wrapper component for [Material-UI](https://github.com/mui-org/material-ui) .
 
 See [Storybook](https://aginix.github.io/mui-react-hook-form-input).
 
@@ -16,7 +16,7 @@ See [Storybook](https://aginix.github.io/mui-react-hook-form-input).
 yarn add @aginix/mui-react-hook-form-input
 ```
 
-Note that `@aginix/mui-react-hook-form-input` has peer-dependencies on `@material-ui/core`, `react-hook-form` and `react-hook-form-input`, all of which can also be installed from npm if your project doesn't already use them.
+Note that `@aginix/mui-react-hook-form-input` has peer-dependencies on `@material-ui/core`, `@material-ui/pickers` and `react-hook-form` and `@hookform/error-message` all of which can also be installed from npm if your project doesn't already use them.
 
 ### Storybook
 

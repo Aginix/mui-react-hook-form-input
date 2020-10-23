@@ -2,11 +2,11 @@ import { Checkbox as MuiCheckbox } from '@material-ui/core';
 import { CheckboxProps as MuiCheckboxProps } from '@material-ui/core/Checkbox';
 import React from 'react';
 
-import { Controller, useFormContext, ValidationRules } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
-export interface CheckboxProps extends MuiCheckboxProps {
-  name: string;
-  rules?: ValidationRules;
+import { BaseProps } from './props';
+
+export interface CheckboxProps extends BaseProps, Omit<MuiCheckboxProps, 'name'> {
   onFocus?: (() => void) | undefined;
 }
 

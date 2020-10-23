@@ -20,7 +20,9 @@
     "build-storybook": "build-storybook"
   },
   "peerDependencies": {
+    "@hookform/error-message": "^0.0.4",
     "@material-ui/core": "^4.10.12",
+    "@material-ui/pickers": "^3.2.10",
     "react": ">=16",
     "react-hook-form": ">= 6.5.0"
   },
@@ -43,9 +45,11 @@
   "module": "dist/mui-react-hook-form-input.esm.js",
   "devDependencies": {
     "@babel/core": "^7.11.5",
+    "@date-io/date-fns": "1.x",
     "@hookform/devtools": "^2.2.1",
     "@hookform/error-message": "^0.0.4",
     "@material-ui/core": "^4.11.0",
+    "@material-ui/pickers": "^3.2.10",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-docs": "^5.3.19",
     "@storybook/addon-info": "^5.3.19",
@@ -55,6 +59,7 @@
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
+    "date-fns": "^2.16.1",
     "husky": "^4.2.5",
     "react": "^16.13.1",
     "react-docgen-typescript-loader": "^3.7.2",

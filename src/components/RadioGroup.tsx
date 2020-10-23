@@ -1,13 +1,12 @@
 import { RadioGroup as MuiRadioGroup } from '@material-ui/core';
 import { RadioGroupProps as MuiRadioGroupProps } from '@material-ui/core/RadioGroup';
-import { Controller, ValidationRules } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
-export interface RadioGroupProps extends MuiRadioGroupProps {
-  name: string;
-  rules?: ValidationRules;
-}
+import { BaseProps } from './props';
+
+export interface RadioGroupProps extends BaseProps, Omit<MuiRadioGroupProps, 'name'> {}
 
 const RadioGroup = ({ name, rules, defaultValue, ...rest }: RadioGroupProps) => {
   const { control } = useFormContext();

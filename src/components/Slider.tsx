@@ -2,12 +2,11 @@ import { Slider as MuiSlider } from '@material-ui/core';
 import { SliderProps as MuiSliderProps } from '@material-ui/core/Slider';
 import React from 'react';
 
-import { Controller, useFormContext, ValidationRules } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
-export interface SliderProps extends MuiSliderProps {
-  name: string;
-  rules?: ValidationRules;
-}
+import { BaseProps } from './props';
+
+export interface SliderProps extends BaseProps, Omit<MuiSliderProps, 'name'> {}
 
 const Slider = ({ name, rules, ...rest }: SliderProps) => {
   const { getValues, control } = useFormContext();

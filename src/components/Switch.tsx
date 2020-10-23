@@ -2,12 +2,11 @@ import { Switch as MuiSwitch } from '@material-ui/core';
 import { SwitchProps as MuiSwitchProps } from '@material-ui/core/Switch';
 import React from 'react';
 
-import { Controller, useFormContext, ValidationRules } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
-export interface SwitchProps extends MuiSwitchProps {
-  name: string;
-  rules?: ValidationRules;
-}
+import { BaseProps } from './props';
+
+export interface SwitchProps extends BaseProps, Omit<MuiSwitchProps, 'name'> {}
 
 const Switch = ({ name, rules, defaultValue, defaultChecked, ...rest }: SwitchProps) => {
   const { control } = useFormContext();

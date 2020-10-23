@@ -7,12 +7,27 @@ import {
   MenuItem,
   Radio,
   FormLabel,
+  Button,
 } from '@material-ui/core';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { useForm, FormProvider } from 'react-hook-form';
-
-import { TextField, Select, Switch, Slider, RadioGroup, Checkbox } from '../src';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  TextField,
+  Select,
+  Switch,
+  Slider,
+  RadioGroup,
+  Checkbox,
+  DatePicker,
+  DateTimePicker,
+  TimePicker,
+  KeyboardDatePicker,
+  KeyboardDateTimePicker,
+  KeyboardTimePicker,
+} from '../src';
 
 const Wrapper: React.FC<{}> = ({ children }) => {
   const form = useForm<any>({
@@ -28,9 +43,16 @@ const Wrapper: React.FC<{}> = ({ children }) => {
   });
 
   return (
-    <FormProvider {...form}>
-      <form onSubmit={handleSubmit}>{children}</form>
-    </FormProvider>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <FormProvider {...form}>
+        <form onSubmit={handleSubmit}>
+          {children}
+          <div>
+            <Button variant="outlined" type="submit">Submit</Button>
+          </div>
+        </form>
+      </FormProvider>
+    </MuiPickersUtilsProvider>
   );
 };
 
@@ -115,4 +137,46 @@ export const SampleCheckbox = () => {
 };
 SampleCheckbox.story = {
   name: 'Checkbox',
+};
+
+export const SampleDatePicker = () => {
+  return <DatePicker label="DatePicker" name="date" />;
+};
+SampleDatePicker.story = {
+  name: 'DatePicker',
+};
+
+export const SampleDateTimePicker = () => {
+  return <DateTimePicker label="DateTimePicker" name="datetime" />;
+};
+SampleDateTimePicker.story = {
+  name: 'DateTimePicker',
+};
+
+export const SampleTimePicker = () => {
+  return <TimePicker label="TimePicker" name="time" />;
+};
+SampleTimePicker.story = {
+  name: 'TimePicker',
+};
+
+export const SampleKeyboardDatePicker = () => {
+  return <KeyboardDatePicker label="KeyboardDatePicker" name="keyboarddate" />;
+};
+SampleKeyboardDatePicker.story = {
+  name: 'KeyboardDatePicker',
+};
+
+export const SampleKeyboardDateTimePicker = () => {
+  return <KeyboardDateTimePicker label="KeyboardDateTimePicker" name="keyboarddatetime" />;
+};
+SampleKeyboardDateTimePicker.story = {
+  name: 'KeyboardDateTimePicker',
+};
+
+export const SampleKeyboardTimePicker = () => {
+  return <KeyboardTimePicker label="KeyboardTimePicker" name="keyboardtime" />;
+};
+SampleKeyboardTimePicker.story = {
+  name: 'KeyboardTimePicker',
 };

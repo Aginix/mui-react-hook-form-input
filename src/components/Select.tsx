@@ -2,12 +2,11 @@ import { Select as MuiSelect } from '@material-ui/core';
 import { SelectProps as MuiSelectProps } from '@material-ui/core/Select';
 import React from 'react';
 
-import { Controller, useFormContext, ValidationRules } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
-export interface SelectProps extends MuiSelectProps {
-  name: string;
-  rules?: ValidationRules;
-}
+import { BaseProps } from './props';
+
+export interface SelectProps extends BaseProps, Omit<MuiSelectProps, 'name'> {}
 
 const Select = ({ name, rules, ...rest }: SelectProps) => {
   const { control, getValues, errors } = useFormContext();

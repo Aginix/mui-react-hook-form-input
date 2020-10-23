@@ -2,12 +2,11 @@ import { TextField as MuiTextField } from '@material-ui/core';
 import { TextFieldProps as MuiTextFieldProps } from '@material-ui/core/TextField';
 import React from 'react';
 
-import { useFormContext, Controller, ValidationRules } from 'react-hook-form';
+import { useFormContext, Controller } from 'react-hook-form';
 
-export type TextFieldProps = MuiTextFieldProps & {
-  name: string;
-  rules?: ValidationRules;
-};
+import { BaseProps } from './props';
+
+export interface TextFieldProps extends BaseProps, Omit<MuiTextFieldProps, 'name'> {}
 
 const TextField = ({ name, rules, ...rest }: TextFieldProps) => {
   const { control, errors } = useFormContext();
