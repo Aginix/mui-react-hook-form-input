@@ -45,7 +45,7 @@
   "module": "dist/mui-react-hook-form-input.esm.js",
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@date-io/date-fns": "1.x",
+    "@date-io/date-fns": "2.x",
     "@hookform/devtools": "^2.2.1",
     "@hookform/error-message": "^0.0.4",
     "@material-ui/core": "^4.11.0",
