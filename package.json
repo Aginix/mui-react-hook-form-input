@@ -70,7 +70,7 @@
     "react-hook-form": "^6.10.0",
     "react-is": "^16.13.1",
     "storybook-dark-mode": "^1.0.3",
-    "ts-loader": "^8.0.7",
+    "ts-loader": "^8.0.10",
     "tsdx": "^0.14.1",
     "tslib": "^2.0.3",
     "typescript": "3.9.7"
