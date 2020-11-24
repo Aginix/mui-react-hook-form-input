@@ -8,7 +8,7 @@ import { BaseProps } from './props';
 
 export interface TextFieldProps extends BaseProps, Omit<MuiTextFieldProps, 'name'> {}
 
-const TextField = ({ name, rules, ...rest }: TextFieldProps) => {
+const TextField = ({ name, rules, defaultValue, ...rest }: TextFieldProps) => {
   const { control, errors } = useFormContext();
 
   return (
@@ -17,9 +17,9 @@ const TextField = ({ name, rules, ...rest }: TextFieldProps) => {
       name={name}
       rules={rules}
       render={({ name, onBlur, onChange, value }) => (
-        <MuiTextField {...rest} error={!!errors[name]} onBlur={onBlur} onChange={onChange} value={value} name={name} />
+        <MuiTextField error={!!errors[name]} {...rest} onBlur={onBlur} onChange={onChange} value={value} name={name} />
       )}
-      defaultValue=""
+      defaultValue={defaultValue || ''}
     />
   );
 };

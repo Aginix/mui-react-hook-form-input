@@ -2,7 +2,7 @@ import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useForm } from 'react-hook-form';
-import { DevTool } from '@hookform/devtools';
+// import { DevTool } from '@hookform/devtools';
 import {
   Button,
   Grid,
@@ -59,7 +59,7 @@ const App = () => {
                 <InputLabel id="age" required>
                   Age
                 </InputLabel>
-                <Select labelId="age" id="age" value="20" name="age" rules={{ required: 'Please enter age', minLength: { value: 4, message: 'Value must be greater than 4' }  }}>
+                <Select labelId="age" id="age" value="20" name="age" rules={{ required: 'Please enter age', min: { value: 4, message: 'Value must be greater than 4' }  }}>
                   <MenuItem value="10">Ten</MenuItem>
                   <MenuItem value="20">Twenty</MenuItem>
                 </Select>
@@ -100,7 +100,7 @@ const App = () => {
               </Button>
             </Grid>
           </Grid>
-          <DevTool control={form.control} />
+          {/* <DevTool control={form.control} /> */}
         </form>
       </FormProvider>
     </Paper>

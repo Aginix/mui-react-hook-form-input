@@ -18,7 +18,7 @@ const Select = ({ name, rules, ...rest }: SelectProps) => {
       name={name}
       rules={rules}
       defaultValue={defaultValue || ''}
-      as={<MuiSelect {...rest} defaultValue={defaultValue} error={!!errors[name]} />}
+      as={<MuiSelect error={!!errors[name]} {...rest} defaultValue={defaultValue} />}
     />
   );
 };
