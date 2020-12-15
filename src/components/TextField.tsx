@@ -17,7 +17,16 @@ const TextField = ({ name, rules, defaultValue, ...rest }: TextFieldProps) => {
       name={name}
       rules={rules}
       render={({ name, onBlur, onChange, value }) => (
-        <MuiTextField error={!!errors[name]} {...rest} onBlur={onBlur} onChange={onChange} value={value} name={name} />
+        <MuiTextField
+          error={!!errors[name]}
+          {...rest}
+          onBlur={onBlur}
+          onChange={event => {
+            onChange(event.target.value);
+          }}
+          value={value}
+          name={name}
+        />
       )}
       defaultValue={defaultValue || ''}
     />
