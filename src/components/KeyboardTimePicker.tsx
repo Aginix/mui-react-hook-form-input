@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import { KeyboardTimePicker as MuiKeyboardTimePicker, KeyboardTimePickerProps } from '@material-ui/pickers';
 import React from 'react';
 
@@ -8,23 +8,28 @@ export interface MuiKeyboardTimePickerProps
   extends BaseProps,
     Omit<KeyboardTimePickerProps, 'value' | 'onChange' | 'name'> {}
 
-const KeyboardTimePicker = ({ name, rules, ...rest }: MuiKeyboardTimePickerProps) => {
-  const { register, setValue, watch } = useFormContext();
-  const value = watch(name, null);
-
-  React.useEffect(() => {
-    register({ name }, rules);
-  }, [register, name, rules]);
-
-  const handleChange = React.useCallback(
-    (value: Date | null) => {
-      setValue(name, value);
-    },
-    [name, setValue]
-  );
+const KeyboardTimePicker = ({ name, rules, defaultValue, ...rest }: MuiKeyboardTimePickerProps) => {
+  const { control, errors } = useFormContext();
 
   return (
-    <MuiKeyboardTimePicker name={name} value={value} onChange={(value: Date | null) => handleChange(value)} {...rest} />
+    <Controller
+      control={control}
+      name={name}
+      rules={rules}
+      render={({ name, onBlur, onChange, value }) => (
+        <MuiKeyboardTimePicker
+          error={!!errors[name]}
+          {...rest}
+          onBlur={onBlur}
+          onChange={value => {
+            onChange(value);
+          }}
+          value={value}
+          name={name}
+        />
+      )}
+      defaultValue={defaultValue || ''}
+    />
   );
 };
 

@@ -34,6 +34,12 @@ const Wrapper: React.FC<{}> = ({ children }) => {
     defaultValues: {
       volume: 0,
       age: '10',
+      date: new Date(),
+      datetime: new Date(),
+      time: new Date(),
+      keyboarddate: new Date(),
+      keyboarddatetime: new Date(),
+      keyboardtime: new Date(),
     },
   });
 
@@ -48,7 +54,9 @@ const Wrapper: React.FC<{}> = ({ children }) => {
         <form onSubmit={handleSubmit}>
           {children}
           <div>
-            <Button variant="outlined" type="submit">Submit</Button>
+            <Button variant="outlined" type="submit">
+              Submit
+            </Button>
           </div>
         </form>
       </FormProvider>
