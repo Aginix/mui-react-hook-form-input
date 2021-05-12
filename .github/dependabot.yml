@@ -1,0 +1,100 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "22:00"
+    timezone: Asia/Bangkok
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: date-fns
+    versions:
+    - 2.17.0
+    - 2.18.0
+    - 2.19.0
+    - 2.20.0
+    - 2.20.1
+    - 2.20.2
+    - 2.20.3
+    - 2.21.0
+  - dependency-name: "@storybook/addon-links"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: "@storybook/addon-actions"
+    versions:
+    - 6.1.15
+    - 6.1.16
+    - 6.1.17
+    - 6.1.18
+    - 6.1.19
+    - 6.1.20
+    - 6.1.21
+    - 6.2.1
+    - 6.2.2
+    - 6.2.3
+    - 6.2.5
+    - 6.2.7
+    - 6.2.8
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: husky
+    versions:
+    - 5.0.9
+    - 5.1.0
+    - 5.1.1
+    - 5.1.2
+    - 5.1.3
+    - 5.2.0
+  - dependency-name: "@types/react-dom"
+    versions:
+    - 17.0.0
+    - 17.0.1
+    - 17.0.2
+  - dependency-name: storybook-dark-mode
+    versions:
+    - 1.0.4
+    - 1.0.6
+  - dependency-name: "@types/react"
+    versions:
+    - 17.0.0
+    - 17.0.1
+    - 17.0.2
+    - 17.0.3
+  - dependency-name: typescript
+    versions:
+    - 4.1.3
+    - 4.1.4
+    - 4.1.5
+    - 4.2.2
+    - 4.2.3
+  - dependency-name: "@testing-library/react"
+    versions:
+    - 11.2.5
+  - dependency-name: "@storybook/addons"
+    versions:
+    - 6.1.15
+    - 6.1.16
+  - dependency-name: "@testing-library/jest-dom"
+    versions:
+    - 5.11.9
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.10
+  - dependency-name: "@date-io/date-fns"
+    versions:
+    - 2.10.6
