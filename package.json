@@ -22,7 +22,7 @@
   "peerDependencies": {
     "@hookform/error-message": "^0.0.5",
     "@material-ui/core": "^4.10.12",
-    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/pickers": "^3.3.10",
     "react": ">=16",
     "react-hook-form": ">= 6.5.0"
   },
@@ -49,7 +49,7 @@
     "@hookform/devtools": "^2.2.1",
     "@hookform/error-message": "^0.0.5",
     "@material-ui/core": "^4.11.4",
-    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/pickers": "^3.3.10",
     "@storybook/addon-actions": "^6.1.1",
     "@storybook/addon-docs": "^6.0.28",
     "@storybook/addon-info": "^5.3.21",
