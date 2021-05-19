@@ -1521,10 +1521,10 @@
     lodash "^4.17.15"
     react-simple-animate "^3.3.8"
 
-"@hookform/error-message@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@hookform/error-message/-/error-message-0.0.5.tgz#606912b506513669980c440f383ff6c78a7aca3a"
-  integrity sha512-es7eLLFA3SXNYAT8aUjvf7Gok1eMHK+9DMILtJA7ZEwYZlCCCPifhpoZmY+5SOopEtF7e+qxFOjX+MJnI3jOcg==
+"@hookform/error-message@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@hookform/error-message/-/error-message-1.1.0.tgz#609a7c304c576f8c471923b72f4cadfad7097b73"
+  integrity sha512-s6gD8B0tF7ISBtm+uBQoe19eANL3+sh+x74eRolv99KDlWdV4rb4qw7jkIcgOwzsNCjLQddTx0/9ZXXmLsxWdA==
 
 "@icons/material@^0.2.4":
   version "0.2.4"
