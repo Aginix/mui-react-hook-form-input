@@ -44,7 +44,7 @@
   "author": "Nonpawit Teerachetmongkol",
   "module": "dist/mui-react-hook-form-input.esm.js",
   "devDependencies": {
-    "@babel/core": "^7.12.13",
+    "@babel/core": "^7.16.12",
     "@date-io/date-fns": "1.x",
     "@hookform/devtools": "^2.2.1",
     "@hookform/error-message": "^0.0.5",
